@@ -597,6 +597,16 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
                 throw new RuntimeException(e);
             }
         }
+        else if(currentSubtype.containsExtraValueKey(Constants.Subtype.ExtraValue.TRANSLITERATION_ENGINE)) {
+            try {
+                String transliterationEngine = currentSubtype.getExtraValueOf(Constants.Subtype.ExtraValue.TRANSLITERATION_ENGINE);
+                mInputLogic.enableTransliterationByEngine(transliterationEngine, getApplicationContext());
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        }
         mInputLogic.disableTransliteration();
         return false;
     }

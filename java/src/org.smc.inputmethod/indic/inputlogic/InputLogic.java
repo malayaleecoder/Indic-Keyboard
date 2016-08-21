@@ -2308,6 +2308,17 @@ public final class InputLogic {
         }
     }
 
+    public void enableTransliterationByEngine(String transliterationEngine, Context context) {
+        InputMethod im;
+        try {
+
+            isTransliteration = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
     public void disableTransliteration() {
         mWordComposer.setTransliterationMethod(null);
         mConnection.setTransliterationMethod(null);

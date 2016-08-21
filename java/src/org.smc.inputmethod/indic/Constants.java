@@ -126,6 +126,12 @@ public final class Constants {
              */
             public static final String COMBINING_RULES = "CombiningRules";
 
+            /**
+             *The subtype extra value used to indicate that the subtype uses a Trasnliteration
+             * Engine to do it's work
+             */
+            public static final String TRANSLITERATION_ENGINE = "TransliterationEngine";
+
             private ExtraValue() {
                 // This utility class is not publicly instantiable.
             }

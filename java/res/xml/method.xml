@@ -194,7 +194,7 @@
             android:label="@string/keyboard_name_ml_varnam"
             android:imeSubtypeLocale="ml_IN"
             android:imeSubtypeMode="keyboard"
-            android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,EmojiCapable" />
+            android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=ml-varnam" />
 
     <!-- Manipuri/Meithei -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
