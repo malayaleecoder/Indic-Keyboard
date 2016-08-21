@@ -36,6 +36,7 @@ import android.os.Build;
 import android.os.Debug;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -209,6 +210,10 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         }
 
         public void onCreate() {
+            if (Build.VERSION.SDK_INT > 9) {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+            }
             final LatinIME latinIme = getOwnerInstance();
             if (latinIme == null) {
                 return;

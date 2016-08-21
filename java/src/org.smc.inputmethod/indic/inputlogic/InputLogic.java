@@ -2301,7 +2301,7 @@ public final class InputLogic {
         try {
             im = InputMethod.fromName(transliterationMethod, context);
             mWordComposer.setTransliterationMethod(im);
-            mConnection.setTransliterationMethod(im);
+            //mConnection.setTransliterationMethod(im);
             isTransliteration = true;
         } catch (Exception e) {
             e.printStackTrace();

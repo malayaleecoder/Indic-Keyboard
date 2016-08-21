@@ -248,12 +248,12 @@ public final class WordComposer {
         refreshTypedWordCache();
 
         String mTypedWord = mTypedWordCache.toString();
-
         if(mTransliterationEngine != null && Constants.CODE_DELETE != event.mKeyCode) {
             String current = new String(Character.toChars(primaryCode));
             int startPos = mTypedWord.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? mTypedWord.length() - mTransliterationEngine.getMaxKeyLength() - 1: 0;
-            String replacement = mTransliterationEngine.transliterate(mTypedWord);
-            mCombinerChain.replace(startPos + replacement.length() - 1, mTypedWord.length(), replacement);
+            String input = mTypedWord.subSequence(startPos, mTypedWord.length()).toString();
+            String replacement = mTransliterationEngine.transliterate(input);
+            mCombinerChain.replace(startPos, mTypedWord.length(), replacement);
 
             context += current;
             if(context.length() > mTransliterationEngine.getContextLength()) {
@@ -277,8 +277,10 @@ public final class WordComposer {
         final int keyY = event.mY;
         final int newIndex = size();
 
-        applyTransliteration(event);
-        applyTransliterationByEngine(event);
+        if(mTransliterationMethod != null)
+            applyTransliteration(event);
+        if(mTransliterationEngine != null)
+            applyTransliterationByEngine(event);
 
         refreshTypedWordCache();
         mCursorPositionWithinWord = mCodePointSize;
