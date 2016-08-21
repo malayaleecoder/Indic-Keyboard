@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Varnam{
 
-    public String readfromurl(String input) {
+    public String transliterate(String input) {
         String starting = "https://api.varnamproject.com/tl/ml/";
         String urlstring = starting + input;
 
@@ -27,12 +27,19 @@ public class Varnam{
             JSONArray dummy = json.getJSONArray("result");
             return dummy.getString(0);
         } catch (MalformedURLException e) {
-            throw new RuntimeExceptio(e);
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeExceptio(e);
+            throw new RuntimeException(e);
         } catch (JSONException e) {
-            throw new RuntimeExceptio(e);
+            throw new RuntimeException(e);
         }
-        return "";
+    }
+
+    public int getMaxKeyLength() {
+        return 4;
+    }
+
+    public int getContextLength() {
+        return 2;
     }
 }

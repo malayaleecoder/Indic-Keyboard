@@ -241,6 +241,27 @@ public final class WordComposer {
         }
     }
 
+    public void applyTransliterationByEngine(final Event event) {
+        context = "";
+        final int primaryCode = event.mCodePoint;
+
+        refreshTypedWordCache();
+
+        String mTypedWord = mTypedWordCache.toString();
+
+        if(mTransliterationEngine != null && Constants.CODE_DELETE != event.mKeyCode) {
+            String current = new String(Character.toChars(primaryCode));
+            int startPos = mTypedWord.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? mTypedWord.length() - mTransliterationEngine.getMaxKeyLength() - 1: 0;
+            String replacement = mTransliterationEngine.transliterate(mTypedWord);
+            mCombinerChain.replace(startPos + replacement.length() - 1, mTypedWord.length(), replacement);
+
+            context += current;
+            if(context.length() > mTransliterationEngine.getContextLength()) {
+                context = context.substring(context.length() - mTransliterationEngine.getContextLength());
+            }
+        }
+    }
+
     /**
      * Apply a processed input event.
      *
@@ -257,6 +278,7 @@ public final class WordComposer {
         final int newIndex = size();
 
         applyTransliteration(event);
+        applyTransliterationByEngine(event);
 
         refreshTypedWordCache();
         mCursorPositionWithinWord = mCodePointSize;
