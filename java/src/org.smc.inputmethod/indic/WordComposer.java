@@ -110,10 +110,12 @@ public final class WordComposer {
 
     public void setTransliterationMethod(InputMethod transliterationMethod) {
         mTransliterationMethod = transliterationMethod;
+        mTransliterationEngine = null;
     }
 
     public void setTransliterationEngine(Varnam vm) {
         mTransliterationEngine = vm;
+        mTransliterationMethod = null;
     }
     /**
      * Clear out the keys registered so far.
@@ -277,10 +279,8 @@ public final class WordComposer {
         final int keyY = event.mY;
         final int newIndex = size();
 
-        if(mTransliterationMethod != null)
-            applyTransliteration(event);
-        if(mTransliterationEngine != null)
-            applyTransliterationByEngine(event);
+        applyTransliteration(event);
+        applyTransliterationByEngine(event);
 
         refreshTypedWordCache();
         mCursorPositionWithinWord = mCodePointSize;
