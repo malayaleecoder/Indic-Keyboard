@@ -57,6 +57,7 @@ import org.smc.inputmethod.indic.Suggest;
 import org.smc.inputmethod.indic.Suggest.OnGetSuggestedWordsCallback;
 import org.smc.inputmethod.indic.SuggestedWords;
 import org.smc.inputmethod.indic.SuggestedWords.SuggestedWordInfo;
+import org.smc.inputmethod.indic.Varnam;
 import org.smc.inputmethod.indic.WordComposer;
 import org.smc.inputmethod.indic.define.DebugFlags;
 import org.smc.inputmethod.indic.define.ProductionFlags;
@@ -2309,9 +2310,10 @@ public final class InputLogic {
     }
 
     public void enableTransliterationByEngine(String transliterationEngine, Context context) {
-        InputMethod im;
         try {
-
+            Varnam vm = new Varnam();
+            mWordComposer.setTransliterationEngine(vm);
+            //mConnection.setTransliterationEngine(vm);
             isTransliteration = true;
         } catch (Exception e) {
             e.printStackTrace();

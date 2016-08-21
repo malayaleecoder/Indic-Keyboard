@@ -29,6 +29,7 @@ import javax.annotation.Nonnull;
 import org.smc.inputmethod.event.CombinerChain;
 import org.smc.inputmethod.event.Event;
 import org.smc.inputmethod.indic.define.DebugFlags;
+import org.smc.inputmethod.indic.Varnam;
 import com.android.inputmethod.latin.utils.CoordinateUtils;
 import com.android.inputmethod.latin.utils.StringUtils;
 
@@ -64,7 +65,7 @@ public final class WordComposer {
     // as an ad-hockery here.
     private String mRejectedBatchModeSuggestion;
     private InputMethod mTransliterationMethod;
-
+    private Varnam mTransliterationEngine;
     // Cache these values for performance
     private CharSequence mTypedWordCache;
     private int mCapsCount;
@@ -111,6 +112,9 @@ public final class WordComposer {
         mTransliterationMethod = transliterationMethod;
     }
 
+    public void setTransliterationEngine(Varnam vm) {
+        mTransliterationEngine = vm;
+    }
     /**
      * Clear out the keys registered so far.
      */
