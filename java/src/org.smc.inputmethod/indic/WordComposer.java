@@ -242,7 +242,9 @@ public final class WordComposer {
             }
         }
     }
-
+    String finalword = "";
+    String previousreplacement = "";
+    int startPosition;
     public void applyTransliterationByEngine(final Event event) {
         context = "";
         final int primaryCode = event.mCodePoint;
@@ -252,10 +254,24 @@ public final class WordComposer {
         String mTypedWord = mTypedWordCache.toString();
         if(mTransliterationEngine != null && Constants.CODE_DELETE != event.mKeyCode) {
             String current = new String(Character.toChars(primaryCode));
-            int startPos = mTypedWord.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? mTypedWord.length() - mTransliterationEngine.getMaxKeyLength() - 1: 0;
-            String input = mTypedWord.subSequence(startPos, mTypedWord.length()).toString();
-            String replacement = mTransliterationEngine.transliterate(input);
-            mCombinerChain.replace(startPos, mTypedWord.length(), replacement);
+            if(previousreplacement == "") {
+                startPosition = mTypedWord.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? mTypedWord.length() - mTransliterationEngine.getMaxKeyLength() - 1 : 0;
+            }
+            else {
+                int startPosition = previousreplacement.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? previousreplacement.length() - mTransliterationEngine.getMaxKeyLength() - 1: 0;
+            }
+            //String input = mTypedWord.subSequence(startPos, mTypedWord.length()).toString();
+            String dummyintermediate = mTypedWord.subSequence(mTypedWord.length() - 1, mTypedWord.length()).toString();
+            if(mTypedWord.length() == 1 && finalword.length() != 0) {
+                finalword = dummyintermediate;
+            }
+            else {
+                finalword += dummyintermediate;
+            }
+            String replacement = mTransliterationEngine.transliterate(finalword);
+            previousreplacement = replacement;
+            mCombinerChain.reset();
+            mCombinerChain.replace(startPosition, replacement.length(), replacement);
 
             context += current;
             if(context.length() > mTransliterationEngine.getContextLength()) {
