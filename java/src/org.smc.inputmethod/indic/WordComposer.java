@@ -245,16 +245,16 @@ public final class WordComposer {
     String finalword = "";
     String previousreplacement = "";
     int startPosition;
-    public void applyTransliterationByEngine(final Event event) {
+    public void applyTransliterationByEngine (final Event event) {
         context = "";
         final int primaryCode = event.mCodePoint;
 
         refreshTypedWordCache();
 
         String mTypedWord = mTypedWordCache.toString();
-        if(mTransliterationEngine != null && Constants.CODE_DELETE != event.mKeyCode) {
+        if (mTransliterationEngine != null && Constants.CODE_DELETE != event.mKeyCode) {
             String current = new String(Character.toChars(primaryCode));
-            if(previousreplacement == "") {
+            if (previousreplacement == "") {
                 startPosition = mTypedWord.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? mTypedWord.length() - mTransliterationEngine.getMaxKeyLength() - 1 : 0;
             }
             else {
@@ -262,7 +262,7 @@ public final class WordComposer {
             }
             //String input = mTypedWord.subSequence(startPos, mTypedWord.length()).toString();
             String dummyintermediate = mTypedWord.subSequence(mTypedWord.length() - 1, mTypedWord.length()).toString();
-            if(mTypedWord.length() == 1 && finalword.length() != 0) {
+            if (mTypedWord.length() == 1 && finalword.length() != 0) {
                 finalword = dummyintermediate;
             }
             else {
@@ -274,8 +274,13 @@ public final class WordComposer {
             mCombinerChain.replace(startPosition, replacement.length(), replacement);
 
             context += current;
-            if(context.length() > mTransliterationEngine.getContextLength()) {
+            if (context.length() > mTransliterationEngine.getContextLength()) {
                 context = context.substring(context.length() - mTransliterationEngine.getContextLength());
+            }
+        }
+        else if (mTransliterationEngine != null && Constants.CODE_DELETE == event.mKeyCode) {
+            if(finalword.length() == 0) {
+                finalword = finalword.substring(0, finalword.length() - 1);
             }
         }
     }
