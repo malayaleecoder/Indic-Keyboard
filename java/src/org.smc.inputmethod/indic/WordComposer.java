@@ -110,10 +110,12 @@ public final class WordComposer {
 
     public void setTransliterationMethod(InputMethod transliterationMethod) {
         mTransliterationMethod = transliterationMethod;
+        mTransliterationEngine = null;
     }
 
     public void setTransliterationEngine(Varnam vm) {
         mTransliterationEngine = vm;
+        mTransliterationMethod = null;
     }
     /**
      * Clear out the keys registered so far.
