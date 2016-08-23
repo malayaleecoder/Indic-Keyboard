@@ -148,6 +148,11 @@
             android:imeSubtypeLocale="kn_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=kn-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_kn_varnam"
+        android:imeSubtypeLocale="kn_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=kn-varnam" />
 
     <!-- Kashmiri / Kashur -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
