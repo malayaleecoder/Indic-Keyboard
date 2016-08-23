@@ -2312,7 +2312,7 @@ public final class InputLogic {
     public void enableTransliterationByEngine(String transliterationEngine, Context context) {
         try {
             Varnam vm = new Varnam();
-            mWordComposer.setTransliterationEngine(vm);
+            mWordComposer.setTransliterationEngine(vm, transliterationEngine);
             isTransliteration = true;
         } catch (Exception e) {
             e.printStackTrace();

@@ -12,8 +12,10 @@ import java.util.Scanner;
 
 public class Varnam{
 
+    private String engineName;
     public String transliterate(String input) {
-        String starting = "https://api.varnamproject.com/tl/ml/";
+        String starting = "https://api.varnamproject.com/tl/";
+        starting = starting + getLanguage() + "/";
         String urlstring = starting + input;
 
         try {
@@ -35,11 +37,32 @@ public class Varnam{
         }
     }
 
+    public void setEngineName(String engineName1) {
+        engineName = engineName1;
+    }
+    public String getEngineName() {
+        return engineName;
+    }
+    public String getLanguage() {
+        if(engineName.equals("ml-varnam"))
+            return "ml";
+        else if(engineName.equals("ta-varnam"))
+            return "ta";
+        return "";
+    }
     public int getMaxKeyLength() {
-        return 4;
+        if(engineName.equals("ml-varnam"))
+            return 4;
+        else if(engineName.equals("ta-varnam"))
+            return 4;
+        return -1;
     }
 
     public int getContextLength() {
-        return 2;
+        if(engineName.equals("ml-varnam"))
+            return 2;
+        else if(engineName.equals("ta-varnam"))
+            return 2;
+        return -1;
     }
 }

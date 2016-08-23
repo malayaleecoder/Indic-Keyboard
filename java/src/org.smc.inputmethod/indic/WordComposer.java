@@ -113,8 +113,9 @@ public final class WordComposer {
         mTransliterationEngine = null;
     }
 
-    public void setTransliterationEngine(Varnam vm) {
+    public void setTransliterationEngine(Varnam vm, String transliterationEngine) {
         mTransliterationEngine = vm;
+        mTransliterationEngine.setEngineName(transliterationEngine);
         mTransliterationMethod = null;
     }
     /**
@@ -279,9 +280,8 @@ public final class WordComposer {
             }
         }
         else if (mTransliterationEngine != null && Constants.CODE_DELETE == event.mKeyCode) {
-            if(finalword.length() == 0) {
+            if (finalword.length() == 0)
                 finalword = finalword.substring(0, finalword.length() - 1);
-            }
         }
     }
 
