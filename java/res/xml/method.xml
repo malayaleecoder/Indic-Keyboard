@@ -326,6 +326,11 @@
             android:imeSubtypeLocale="sa_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=sa-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_sa_varnam"
+        android:imeSubtypeLocale="sa_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=sa-varnam" />
 
     <!-- Santali -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
