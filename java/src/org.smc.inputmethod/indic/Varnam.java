@@ -60,6 +60,8 @@ public class Varnam{
             return "bn";
         else if(engineName.equals("gu-varnam"))
             return "gu";
+        else if(engineName.equals("mr-varnam"))
+            return "mr";
         return "";
     }
     public int getMaxKeyLength() {
@@ -78,6 +80,8 @@ public class Varnam{
         else if(engineName.equals("bn-varnam"))
             return 0;
         else if(engineName.equals("gu-varnam"))
+            return 4;
+        else if(engineName.equals("mr-varnam"))
             return 4;
         return -1;
     }
@@ -98,6 +102,8 @@ public class Varnam{
         else if(engineName.equals("bn-varnam"))
             return 0;
         else if(engineName.equals("gu-varnam"))
+            return 2;
+        else if(engineName.equals("mr-varnam"))
             return 2;
         return -1;
     }

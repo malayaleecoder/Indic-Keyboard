@@ -234,6 +234,11 @@
             android:imeSubtypeLocale="mr_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=mr-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_mr_varnam"
+        android:imeSubtypeLocale="mr_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=mr-varnam" />
 
     <!-- Mon -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
