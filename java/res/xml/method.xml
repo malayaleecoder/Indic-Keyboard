@@ -322,6 +322,11 @@
             android:imeSubtypeLocale="ta_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=ta-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_ta_varnam"
+        android:imeSubtypeLocale="ta_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=ta-varnam" />
 
     <!-- Telugu -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
