@@ -48,6 +48,11 @@
             android:imeSubtypeLocale="as_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=as-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_as_varnam"
+        android:imeSubtypeLocale="as_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=as-varnam" />
 
     <!-- Bengali -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
