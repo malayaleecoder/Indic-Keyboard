@@ -62,7 +62,7 @@ public class Varnam{
         if(engineName.equals("ml-varnam"))
             return 2;
         else if(engineName.equals("ta-varnam"))
-            return 2;
+            return 1;
         return -1;
     }
 }
