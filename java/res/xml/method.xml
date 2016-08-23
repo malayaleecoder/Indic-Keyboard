@@ -116,6 +116,11 @@
             android:imeSubtypeLocale="hi_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=hi-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_hi_varnam"
+        android:imeSubtypeLocale="hi_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=hi-varnam" />
 
     <!-- Kannada -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
