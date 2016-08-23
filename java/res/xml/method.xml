@@ -75,6 +75,11 @@
             android:imeSubtypeLocale="bn_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=bn-avro" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_bn_varnam"
+        android:imeSubtypeLocale="bn_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=bn-varnam" />
 
     <!-- Burmese / Myanmar -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
@@ -99,6 +104,11 @@
             android:imeSubtypeLocale="gu_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=gu-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_gu_varnam"
+        android:imeSubtypeLocale="gu_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=gu-varnam" />
 
     <!-- Hindi -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
