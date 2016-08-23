@@ -359,6 +359,11 @@
             android:imeSubtypeLocale="te_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=te-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_te_varnam"
+        android:imeSubtypeLocale="te_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=te-varnam" />
 
     <!-- Urdu -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
