@@ -270,6 +270,11 @@
             android:imeSubtypeLocale="ne"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=nepali_inscript,EmojiCapable" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_ne_varnam"
+        android:imeSubtypeLocale="ne"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=ne-varnam" />
 
     <!-- Oriya/Odia -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
