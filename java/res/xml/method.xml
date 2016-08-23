@@ -314,6 +314,11 @@
             android:imeSubtypeLocale="pa_IN"
             android:imeSubtypeMode="keyboard"
             android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationMethod=pa-transliteration" />
+    <subtype android:icon="@drawable/ic_ime_switcher_dark"
+        android:label="@string/keyboard_name_pa_varnam"
+        android:imeSubtypeLocale="pa_IN"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=qwerty,TransliterationEngine=pa-varnam" />
 
     <!-- Sanskrit -->
     <subtype android:icon="@drawable/ic_ime_switcher_dark"
