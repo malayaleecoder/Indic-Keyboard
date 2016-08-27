@@ -120,6 +120,7 @@ public final class WordComposer {
     public void setTransliterationEngine(Varnam vm, String transliterationEngine) {
         mTransliterationEngine = vm;
         mTransliterationEngine.setEngineName(transliterationEngine);
+        //Have to also make this null because on change of keyboard in between, the transliteration by engine does not work
         mTransliterationMethod = null;
     }
     /**
@@ -257,33 +258,38 @@ public final class WordComposer {
         String mTypedWord = mTypedWordCache.toString();
         if (mTransliterationEngine != null && Constants.CODE_DELETE != event.mKeyCode) {
             String current = new String(Character.toChars(primaryCode));
+
             if (previousreplacement == "") {
                 startPosition = mTypedWord.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? mTypedWord.length() - mTransliterationEngine.getMaxKeyLength() - 1 : 0;
             }
             else {
                 int startPosition = previousreplacement.length() - 1 > mTransliterationEngine.getMaxKeyLength() ? previousreplacement.length() - mTransliterationEngine.getMaxKeyLength() - 1: 0;
             }
-            //String input = mTypedWord.subSequence(startPos, mTypedWord.length()).toString();
+
             String dummyintermediate = mTypedWord.subSequence(mTypedWord.length() - 1, mTypedWord.length()).toString();
+
             if (mTypedWord.length() == 1 && finalword.length() != 0) {
                 finalword = dummyintermediate;
             }
             else {
                 finalword += dummyintermediate;
             }
+
             String replacement = mTransliterationEngine.transliterate(finalword);
             previousreplacement = replacement;
+            //Resetting the Combiner Chain because when a new letter is typed, the entire word changes
             mCombinerChain.reset();
             mCombinerChain.replace(startPosition, replacement.length(), replacement);
-
             context += current;
+
             if (context.length() > mTransliterationEngine.getContextLength()) {
                 context = context.substring(context.length() - mTransliterationEngine.getContextLength());
             }
         }
         else if (mTransliterationEngine != null && Constants.CODE_DELETE == event.mKeyCode) {
-            if (finalword.length() == 0)
+            if (finalword.length() == 0) {
                 finalword = finalword.substring(0, finalword.length() - 1);
+            }
         }
     }
 

@@ -1399,11 +1399,10 @@ public final class InputLogic {
         final SuggestedWords suggestedWords = holder.get(null,
                 Constants.GET_SUGGESTED_WORDS_TIMEOUT);
         if (suggestedWords != null) {
-            if(isTransliterationByEngine) {
+            if (isTransliterationByEngine) {
                 SuggestedWords suggestedWords1 = new SuggestedWords(mWordComposer.mTransliterationEngine.getSuggestions(),
                         null, false, false, false, SuggestedWords.INPUT_STYLE_APPLICATION_SPECIFIED);
                 mSuggestionStripViewAccessor.showSuggestionStrip(suggestedWords1);
-
             }
             else {
                 mSuggestionStripViewAccessor.showSuggestionStrip(suggestedWords);
