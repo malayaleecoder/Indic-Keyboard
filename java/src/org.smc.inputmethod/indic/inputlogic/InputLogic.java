@@ -121,6 +121,7 @@ public final class InputLogic {
 
     private boolean isIndic;
     private boolean isTransliteration;
+    public boolean isTransliterationByEngine;
     /**
      * Create a new instance of the input logic.
      * @param latinIME the instance of the parent LatinIME. We should remove this when we can.
@@ -1398,7 +1399,15 @@ public final class InputLogic {
         final SuggestedWords suggestedWords = holder.get(null,
                 Constants.GET_SUGGESTED_WORDS_TIMEOUT);
         if (suggestedWords != null) {
-            mSuggestionStripViewAccessor.showSuggestionStrip(suggestedWords);
+            if(isTransliterationByEngine) {
+                SuggestedWords suggestedWords1 = new SuggestedWords(mWordComposer.mTransliterationEngine.getSuggestions(),
+                        null, false, false, false, SuggestedWords.INPUT_STYLE_APPLICATION_SPECIFIED);
+                mSuggestionStripViewAccessor.showSuggestionStrip(suggestedWords1);
+
+            }
+            else {
+                mSuggestionStripViewAccessor.showSuggestionStrip(suggestedWords);
+            }
         }
     }
 
@@ -2298,6 +2307,7 @@ public final class InputLogic {
 
     public void enableTransliteration(String transliterationMethod, Context context) {
         InputMethod im;
+        isTransliterationByEngine = false;
         try {
             im = InputMethod.fromName(transliterationMethod, context);
             mWordComposer.setTransliterationMethod(im);
@@ -2311,6 +2321,7 @@ public final class InputLogic {
 
     public void enableTransliterationByEngine(String transliterationEngine, Context context) {
         try {
+            isTransliterationByEngine = true;
             Varnam vm = new Varnam();
             mWordComposer.setTransliterationEngine(vm, transliterationEngine);
             isTransliteration = true;
@@ -2321,6 +2332,7 @@ public final class InputLogic {
     }
 
     public void disableTransliteration() {
+        isTransliterationByEngine = false;
         mWordComposer.setTransliterationMethod(null);
         mConnection.setTransliterationMethod(null);
         isTransliteration = false;

@@ -7,12 +7,15 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Varnam{
 
     private String engineName;
+    private ArrayList<String> suggestions = new ArrayList<>();
+
     public String transliterate(String input) {
         String starting = "https://api.varnamproject.com/tl/";
         starting = starting + getLanguage() + "/";
@@ -27,7 +30,11 @@ public class Varnam{
             scan.close();
             JSONObject json = new JSONObject(finalresult);
             JSONArray dummy = json.getJSONArray("result");
-            return dummy.getString(0);
+            suggestions.clear();
+            for(int i = 0; i < dummy.length(); i++) {
+                suggestions.add(dummy.getString(i));
+            }
+            return suggestions.get(0);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -37,6 +44,14 @@ public class Varnam{
         }
     }
 
+    public ArrayList<SuggestedWords.SuggestedWordInfo> getSuggestions() {
+        final ArrayList<SuggestedWords.SuggestedWordInfo> suggestionsList = new ArrayList<>();
+        int n = suggestions.size();
+        for(int i = 0; i < suggestions.size(); i++) {
+            suggestionsList.add(new SuggestedWords.SuggestedWordInfo(suggestions.get(i), i, 0, null, -1, -1));
+        }
+        return suggestionsList;
+    }
     public void setEngineName(String engineName1) {
         engineName = engineName1;
     }

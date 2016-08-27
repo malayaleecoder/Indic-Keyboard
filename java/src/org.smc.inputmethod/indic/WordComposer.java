@@ -65,7 +65,7 @@ public final class WordComposer {
     // as an ad-hockery here.
     private String mRejectedBatchModeSuggestion;
     private InputMethod mTransliterationMethod;
-    private Varnam mTransliterationEngine;
+    public Varnam mTransliterationEngine;
     // Cache these values for performance
     private CharSequence mTypedWordCache;
     private int mCapsCount;
@@ -82,6 +82,10 @@ public final class WordComposer {
      * Whether the composing word has the only first char capitalized.
      */
     private boolean mIsOnlyFirstCharCapitalized;
+
+    public String finalword = "";
+    public String previousreplacement = "";
+    public int startPosition;
 
     public WordComposer() {
         mCombinerChain = new CombinerChain("");
@@ -243,9 +247,7 @@ public final class WordComposer {
             }
         }
     }
-    String finalword = "";
-    String previousreplacement = "";
-    int startPosition;
+
     public void applyTransliterationByEngine (final Event event) {
         context = "";
         final int primaryCode = event.mCodePoint;
