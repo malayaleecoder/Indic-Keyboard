@@ -23,7 +23,7 @@ dependencies {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 16
@@ -47,10 +47,10 @@ android {
     }
     signingConfigs {
         release {
-//            storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
-//            storePassword System.console().readLine("\n\$ Enter keystore password: ")
-//            keyAlias System.console().readLine("\n\$ Enter key alias: ")
-//            keyPassword System.console().readLine("\n\$ Enter key password: ")
+            storeFile file(System.console().readLine("\n\$ Enter keystore path: "))
+            storePassword System.console().readLine("\n\$ Enter keystore password: ")
+            keyAlias System.console().readLine("\n\$ Enter key alias: ")
+            keyPassword System.console().readLine("\n\$ Enter key password: ")
         }
     }
     buildTypes {
